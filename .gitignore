@@ -1,0 +1,27 @@
+# Virtual environment
+.venv/
+
+# Environment variables / secrets
+.env
+
+# PyCharm
+.idea/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Pytest
+.pytest_cache/
+
+# Test reports
+reports/test_report.html
+reports/execution_history.csv
+
+# Test evidence
+reports/screenshots/*
+reports/logs/*
+
+# OS files
+.DS_Store
+Thumbs.db
