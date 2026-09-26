@@ -1,30 +1,20 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 
 from pages.base_page import BasePage
 
+from pages.availability_page.availability_locators import (
+    CHECK_IN,
+    CHECK_OUT,
+    CHECK_AVAILABILITY_BUTTON,
+)
+
 
 class AvailabilityPage(BasePage):
 
-    CHECK_IN = (
-        By.XPATH,
-        "//label[@for='checkin']/following-sibling::div//input"
-    )
-
-    CHECK_OUT = (
-        By.XPATH,
-        "//label[@for='checkout']/following-sibling::div//input"
-    )
-
-    CHECK_AVAILABILITY_BUTTON = (
-        By.XPATH,
-        "//button[normalize-space()='Check Availability']"
-    )
-
     def enter_check_in(self, date):
         element = self.wait.until(
-            EC.element_to_be_clickable(self.CHECK_IN)
+            EC.element_to_be_clickable(CHECK_IN)
         )
 
         self.driver.execute_script(
@@ -42,7 +32,7 @@ class AvailabilityPage(BasePage):
 
     def enter_check_out(self, date):
         element = self.wait.until(
-            EC.element_to_be_clickable(self.CHECK_OUT)
+            EC.element_to_be_clickable(CHECK_OUT)
         )
 
         self.driver.execute_script(
@@ -60,7 +50,7 @@ class AvailabilityPage(BasePage):
 
     def clear_check_in(self):
         element = self.wait.until(
-            EC.element_to_be_clickable(self.CHECK_IN)
+            EC.element_to_be_clickable(CHECK_IN)
         )
 
         self.driver.execute_script(
@@ -78,7 +68,7 @@ class AvailabilityPage(BasePage):
 
     def clear_check_out(self):
         element = self.wait.until(
-            EC.element_to_be_clickable(self.CHECK_OUT)
+            EC.element_to_be_clickable(CHECK_OUT)
         )
 
         self.driver.execute_script(
@@ -94,10 +84,16 @@ class AvailabilityPage(BasePage):
         element.send_keys(Keys.CONTROL, "a")
         element.send_keys(Keys.BACKSPACE)
 
-
-
     def click_check_availability(self):
-        self.click(self.CHECK_AVAILABILITY_BUTTON)
+        self.click(CHECK_AVAILABILITY_BUTTON)
 
     def is_availability_button_visible(self):
-        return self.is_visible(self.CHECK_AVAILABILITY_BUTTON)
+        return self.is_visible(CHECK_AVAILABILITY_BUTTON)
+
+
+    def get_check_in_value(self):
+        return self.driver.find_element(*CHECK_IN).get_attribute("value")
+
+
+    def get_check_out_value(self):
+       return self.driver.find_element(*CHECK_OUT).get_attribute("value")

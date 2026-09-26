@@ -1,8 +1,13 @@
-from pages.availability_page import AvailabilityPage
+import pytest
+
+from pages.availability_page.availability_page import AvailabilityPage
+from pages.room_selection_page.room_selection_page import RoomSelectionPage
 from pages.booking_page import BookingPage
 from pages.rooms_page import RoomsPage
 
 
+@pytest.mark.ui
+@pytest.mark.e2e
 def test_complete_hotel_booking_e2e(driver):
 
     # STEP 1: Open hotel website
@@ -22,17 +27,20 @@ def test_complete_hotel_booking_e2e(driver):
 
     room_count = rooms.get_room_count()
 
-    assert room_count > 0, "No available rooms were displayed"
+    assert room_count > 0, \
+        "No available rooms were displayed"
 
     # STEP 5: Select Single Room
     rooms.click_single_room()
 
-    # STEP 6: Open the booking form
-    booking = BookingPage(driver)
+    # STEP 6: Open reservation from Room Selection page
+    room_selection = RoomSelectionPage(driver)
 
-    booking.click_reserve()
+    room_selection.click_reserve_now()
 
     # STEP 7: Enter valid guest details
+    booking = BookingPage(driver)
+
     booking.enter_first_name("Toya")
     booking.enter_last_name("Test")
     booking.enter_email("toya.test@example.com")
@@ -44,4 +52,3 @@ def test_complete_hotel_booking_e2e(driver):
     # STEP 9: Verify booking confirmation
     assert booking.is_booking_confirmed(), \
         "Booking confirmation was not displayed"
-

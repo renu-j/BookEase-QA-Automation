@@ -57,9 +57,8 @@ def test_booking_with_phone_below_minimum(driver):
     assert "size must be between 11 and 21" in messages
 
     # Booking must not be confirmed
-    assert not booking_page.is_element_present(
-        booking_page.BOOKING_CONFIRMED
-    ), "Booking was confirmed with an invalid phone number"
+    assert not booking_page.is_booking_confirmation_present(), \
+        "Booking was confirmed with an invalid phone number"
 
 
 # ============================================================
@@ -218,6 +217,5 @@ def test_booking_with_phone_above_maximum(driver):
     assert "size must be between 11 and 21" in messages
 
     # Booking must not be confirmed
-    assert not booking_page.is_element_present(
-        booking_page.BOOKING_CONFIRMED
-    ), "Booking was confirmed with an invalid phone number"
+    assert not booking_page.is_booking_confirmation_present(), \
+        "Booking was confirmed with an invalid phone number"
