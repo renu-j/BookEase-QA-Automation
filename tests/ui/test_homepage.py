@@ -17,7 +17,7 @@ def test_home_page_loads(driver):
         "https://automationintesting.online/"
     )
 
-    assert "this is failed" in driver.title
+    assert "Restful-booker-platform demo" in driver.title
 
 
 # ============================================================
