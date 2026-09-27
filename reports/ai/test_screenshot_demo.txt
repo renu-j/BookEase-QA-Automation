@@ -1,0 +1,9 @@
+AI FAILURE ANALYSIS
+===================
+
+Test: test_screenshot_demo
+
+Analysis:
+Likely cause: The actual application result did not match the expected result.
+
+Suggested action: Review the assertion and compare the expected result with the actual application behavior.
