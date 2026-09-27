@@ -37,7 +37,7 @@ The primary objectives of this project are to:
 9. Generate a consolidated HTML execution report.
 
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 | Technology          | Purpose                    |
 | ------------------- | -------------------------- |
@@ -351,7 +351,7 @@ pip install -r requirements.txt
 
 ---
 
-# ▶️ Running the Tests
+# Running the Tests
 
 ## Run the complete test suite
 
